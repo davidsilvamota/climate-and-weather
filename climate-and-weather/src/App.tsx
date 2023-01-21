@@ -4,8 +4,7 @@ import LoginPage from "./pages/LoginPage";
 function LayoutPage() {
   return (
     <div>
-      <div>Visivel sempre</div>
-      <Outlet />;
+      <Outlet />
     </div>
   );
 }
@@ -15,7 +14,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LayoutPage />}>
-          <Route path="Login" element={<LoginPage/>}/>
+          <Route path="Login" element={<LoginPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
