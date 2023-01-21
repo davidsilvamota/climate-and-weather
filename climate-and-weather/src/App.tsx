@@ -1,11 +1,23 @@
-import { Button } from "@material-ui/core";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+
+function LayoutPage() {
+  return (
+    <div>
+      <div>Visivel sempre</div>
+      <Outlet />;
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <div>
-      <Button style={{ margin: 8 }} variant="contained" color="primary">
-        Hello Worl
-      </Button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LayoutPage />}>
+          <Route path="Login" element={<LoginPage/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
