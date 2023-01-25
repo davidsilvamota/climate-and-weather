@@ -1,8 +1,7 @@
-import { RecordWithTtl } from "dns";
-import React, { ReducerAction } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
+import PrivateRoutes from "./PrivateRoutes";
 
 function LayoutPage() {
   return (
@@ -11,18 +10,14 @@ function LayoutPage() {
     </div>
   );
 }
-function PrivateRoute(props: { element: any }) {
-  const user = false;
 
-  return user ? props.element : <LoginPage />;
-}
 export default function MyRoutes() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<LoginPage />} />
         <Route path="/" element={<LoginPage />} />
-        <Route path="Home" element={<PrivateRoute element={<HomePage />} />} />
+        <Route path="Home" element={<PrivateRoutes element={<HomePage />} />} />
       </Routes>
     </BrowserRouter>
   );
