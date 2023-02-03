@@ -1,13 +1,17 @@
 import { InputModel } from "../components/molecules/InputModel";
 import Card from "react-bootstrap/Card";
 import { Button, Image } from "react-bootstrap";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../utils/AuthProvider";
 
 export default function LoginPage() {
+  const { displayName, userAuth } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  console.log({ userAuth });
 
   return (
     <div
@@ -19,6 +23,7 @@ export default function LoginPage() {
       }}
     >
       <Card className="p-5 m-1">
+        {displayName}
         <Image
           style={{ maxWidth: 400 }}
           fluid={true}
@@ -39,7 +44,14 @@ export default function LoginPage() {
           type="password"
           isInvalid={false}
         />
-        <Button onClick={() => navigate("/Home")} variant="primary" size="lg">
+        <Button
+          onClick={() => {
+            navigate("/Home");
+            console.log("clicou");
+          }}
+          variant="primary"
+          size="lg"
+        >
           Login
         </Button>
       </Card>
